@@ -9,13 +9,13 @@ $(function(){
 		$("#msgArea form").submit(function()
 		{
 			clearInterval(timer);
-			var message = $("#msgArea form textarea").val();
+			var message = $("#msgArea form input[id=msg]").val();
 			$.post(url, {action:"addmsg", message:message}, function(data)
 			{
 				if(data.error == "ok")
 				{
 					getMessages();
-					$("#msgArea form textarea").val("");
+					$("#msgArea form input[id=msg]").val("");
 				}
 				timer = setInterval(getMessages, 1000);
 			}
@@ -32,6 +32,7 @@ function getMessages()
 		if(data.error == "ok")
 		{
 			$("#textArea").empty().append(data.messages);
+			if(data.scroll == "yes") $('#textArea').animate({"scrollTop": $('#textArea')[0].scrollHeight}, "fast");
 		}
 	}, "json");
 		

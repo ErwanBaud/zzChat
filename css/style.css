@@ -132,7 +132,7 @@ div#container
 
 div#textArea
 {
-	height:calc(97% - 75px);
+	height:calc(97% - 50px);
 	width:calc(100% - 40px);
 	margin:0%;
 	padding:1px 20px;  
@@ -154,7 +154,7 @@ div#msgArea
 {
 	position:absolute;
 	bottom:0;
-	height:75px;
+	height:50px;
 	width:calc(100% - 20px);
 	margin:0%;
 	padding:0% 10px;
@@ -167,22 +167,21 @@ div#msgArea
 form#form_msg
 { margin-top:10px; }
 
-textarea#msg
+input#msg
 {
-	height:43px;
 	vertical-align:middle;
+	margin:0px;
 	padding:5px;
 	width:calc(97% - 75px);
 	border-radius:20px;
 	background-color: #CCC;
 	outline:none;
-	resize:none;	
 }
 
 input#send
 {
 	float:right;
-	height:55px;
+	height:30px;
 	width:75px;
 	vertical-align:middle;
 	border-radius:20px;

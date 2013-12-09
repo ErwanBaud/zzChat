@@ -75,7 +75,7 @@ if(!isset($_SESSION["login"]) || empty($_SESSION["login"]))
 				<!-- start #msgArea -->
 				<div id="msgArea">
 					<form id="form_msg" action="" method="post">
-						<textarea name="msg" id="msg" rows="2"></textarea><input id="send" type="submit" value="Envoyer" />
+						<input type="text" name="msg" id="msg" maxlength="150" autocomplete="off"></input><input id="send" type="submit" value="Envoyer" />
 					</form>
 				</div>
 				<!-- end #msgArea -->

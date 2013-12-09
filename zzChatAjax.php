@@ -32,7 +32,10 @@ else
 			
 			while(sizeof($content) >= $msg_limit) array_shift($content);
 			
-			array_push($content, array( "date" => date("H:i:s"), "autor" => $login, "text" => $message));
+			$tab = end($content);
+			$id = $tab["id"];
+			
+			array_push($content, array( "id" => $id+1, "date" => date("H:i:s"), "autor" => $login, "text" => $message));
 			
 			file_put_contents($db_msgs, json_encode($content));
 			
@@ -45,11 +48,22 @@ else
          */
         if($_POST["action"] == "getMessages")
         {
+        	$currentId = 0;
 			$content = json_decode(file_get_contents($db_msgs), true);
 			
+			$t = end($content);
+			$id = $t["id"];
+			
 			foreach($content as $tab)
-					$d["messages"] .= "<p>[" . $tab["date"] . "] <strong>" . $tab["autor"] . "</strong> : " . $tab["text"] . "</p>\n";
-				
+				$d["messages"] .= "<p>[" . $tab["date"] . "] <strong>" . $tab["autor"] . "</strong> : " . $tab["text"] . "</p>\n";
+
+			if( $currentId < $id )
+			{
+				$d["scroll"] = "yes";
+				$currentId = $id;
+			}
+			else $d["scroll"] = "no";
+			
 			$d["error"] = "ok";
 		}
         
