@@ -27,6 +27,7 @@
 	
 
 		<?php
+			/* Display warning messages	*/
 			if($error) echo '	<div class="notice">
 									<a href="" class="close">close</a>
 									<p class="warn">' . $errorMSG . '</p>

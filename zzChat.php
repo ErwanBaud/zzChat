@@ -41,7 +41,7 @@ if( isntAuth())
 		
 		<!-- start #header -->
 		<div id="header">
-				<?php welcome($_SESSION["login"]); ?>
+				<?php echo welcome($_SESSION["login"]); ?>
 		</div><!-- #header -->
 
 
@@ -53,6 +53,7 @@ if( isntAuth())
 
 				<!-- start #online -->
 				<div id="online">
+					<!-- The online users are display here -->
 					<p></p>
 				</div>
 				<!-- end #online -->
@@ -68,6 +69,7 @@ if( isntAuth())
 				
 				<!-- start #textArea -->
 				<div id="textArea">
+					<!-- All messages are display here -->
 				</div>
 				<!-- end #textArea -->		
 						

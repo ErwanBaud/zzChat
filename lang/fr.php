@@ -1,7 +1,7 @@
 <?php
 /*
  * Langue: francaise
- * Défini comme le fichier de langue par défaut
+ * Default language file
  */
 $index_title = 'Connexion au zzChat';
 $index_remember = 'Se rappeler de moi';

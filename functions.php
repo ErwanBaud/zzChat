@@ -92,7 +92,7 @@ function randomColor()
 }
 
 
-function welcome($login, $db_users)
+function welcome($login)
 {
 	include 'language.php';
 	$db_users = "./db/users.json";
@@ -102,7 +102,7 @@ function welcome($login, $db_users)
 	
 	
 	/* Generate header HTML code	*/
-	echo	'<div id="head1">
+	return	'<div id="head1">
 			<p id="head">' . $welcome . '
 			</p>
 		</div>
