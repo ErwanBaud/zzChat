@@ -9,5 +9,6 @@ $init_bad_login = 'Please choose a login like ';
 $welcome = 'Welcome on the zzChat !';
 $online = ' ZZ online :';
 
-$error_users = "Error during users's loading !";
+$error_users = "Error during access to the file users.json !";
+$init_cookie_failed = "Error during the cookie setting !";
 ?>

@@ -1,10 +1,10 @@
 <?php
+include 'functions.php';
 
 session_start();
 
-/* If login isn't set, then  return on the home page */
-if(!isset($_SESSION["login"]) || empty($_SESSION["login"]))
-	header('location:index.php');
+if( isntAuth()) 
+		header('location:index.php');
 
 $db_users = "./db/users.json";
 $login = $_SESSION['login'];
