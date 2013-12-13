@@ -41,7 +41,7 @@ if( isntAuth())
 		
 		<!-- start #header -->
 		<div id="header">
-				<?php echo welcome($_SESSION["login"]); ?>
+				<?php echo welcome($_SESSION["login"], "./db/users.json"); ?>
 		</div><!-- #header -->
 
 

@@ -7,7 +7,7 @@ $login = "";
 $error = FALSE;
 $errorMSG = '';
 $db_users = "./db/users.json";
-$regex = '/^[a-zA-Z][a-zA-Z0-9]{1,14}$/';
+$regex = '/^[a-zA-Z][a-zA-Z0-9]{1,14}$/'; /* Regex for login syntax control	*/
 
 
 /* If the cookie is set Load the login to display it in the form	*/

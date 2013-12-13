@@ -1,6 +1,6 @@
-var url = "./zzChatAjax.php";
-//var timer = setInterval(getMessages, 5 * 1000);			// timer for getMessages
-//var ctimer = setInterval(getConnected, 1 * 60 * 1000);	// timer for getConnected
+//var url = "./zzChatAjax.php";
+var timer = setInterval(getMessages, 5 * 1000);			// timer for getMessages
+var ctimer = setInterval(getConnected, 1 * 60 * 1000);	// timer for getConnected
 
 /* First display */
 getMessages();
@@ -10,9 +10,9 @@ getConnected();
 $(function(){
 		$("#msgArea form").submit(function()
 		{
-			/* timer getMessages() stop	*/
+			/* Timer getMessages() stop	*/
 			clearInterval(timer);
-			/* load the input text content	*/
+			/* Load the input text content	*/
 			var message = $("#msgArea form input[id=msg]").val();
 			/* AJAX request	*/
 			$.post(url, {action:"addmsg", message:message}, function(data)
@@ -20,14 +20,14 @@ $(function(){
 				if(data.error == "ok")
 				{
 					getMessages();
-					/* erase the input text content	*/
+					/* Erase the input text content	*/
 					$("#msgArea form input[id=msg]").val("");
 				}
-				/* timer getMessages() restart	*/
+				/* Timer getMessages() restart	*/
 				timer = setInterval(getMessages, 5 * 1000);
 			}
 			, "json");
-			/* block the form submission	*/
+			/* Block the form submission	*/
 			return false;
 		});
 });
@@ -42,14 +42,14 @@ function getMessages()
 	{
 		if(data.error == "ok")
 		{	
-			/* if the scrollbar is on the bottom we have to set it on the bottom too after the display of messages	*/
+			/* If the scrollbar is on the bottom we have to set it on the bottom too after the display of messages	*/
 			if( $("#textArea").scrollTop() + $("#textArea").height() + 2 == $("#textArea").prop("scrollHeight") )
 				move = true;
 							
-			/* erase and write messages in textArea div	*/
+			/* Erase and write messages in textArea div	*/
 			$("#textArea").empty().append(data.messages);
 			if( move )
-				/* move the scrollbar on the bottom	*/
+				/* Move the scrollbar on the bottom	*/
 				$('#textArea').animate({"scrollTop": $('#textArea')[0].scrollHeight}, "slow");
 		}
 	}, "json");
@@ -64,7 +64,7 @@ function getConnected()
 	{
 		if(data.error == "ok")
 		{
-			/* erase and write users in online div	*/
+			/* Erase and write users in online div	*/
 			$("#online p").empty().append(data.online);
 		}
 	}, "json");

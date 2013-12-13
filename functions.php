@@ -1,19 +1,25 @@
 <?php
 
-
+/*
+ * Function isntAuth() : return TRUE if the user is connected, FALSE else
+ */
 function isntAuth()
 {
 	/* If login isn't set, then  return on the home page */
 	return (!isset($_SESSION["login"]) || empty($_SESSION["login"]));
 }
 
-
+/*
+ * Function correctLogin() : return TRUE if the login is correct, FALSE else
+ */
 function correctLogin($login, $regex)
 {
 	return preg_match($regex, $login);
 }
 
-
+/*
+ * Function uniqLogin() : return TRUE if the login is not used, FALSE else
+ */
 function uniqLogin($login, $db_users)
 {
 	$single = FALSE;
@@ -26,7 +32,9 @@ function uniqLogin($login, $db_users)
 	return $single;
 }
 
-
+/*
+ * Function cookie() : set or unset the cookie, return TRUE if success
+ */
 function cookie($login, $remember)
 {
 	$return = FALSE;
@@ -41,7 +49,9 @@ function cookie($login, $remember)
 	return $return;
 }
 
-
+/*
+ * Function connect() : choose a color and add the user in users.json file, return TRUE if success, FALSE else
+ */
 function connect($login, $db_users)
 {
 	$return = FALSE;
@@ -64,7 +74,9 @@ function connect($login, $db_users)
 	return $return;
 }
 
-
+/*
+ * Function randomColor() : return a random color choosen in the array, good luck ^^
+ */
 function randomColor()
 {
 	$colors = array("Ali ceBlue", "AntiqueWhite", "Aqua", "AquaMarine", "Azure" ,
@@ -91,12 +103,14 @@ function randomColor()
    return $colors[array_rand($colors)];
 }
 
-
-function welcome($login)
+/*
+ * Function welcome() : return the HTML code of the header
+ */
+function welcome($login, $db_users)
 {
 	include 'language.php';
-	$db_users = "./db/users.json";
 
+	/* Loading users in an array       */
 	$users = json_decode(file_get_contents($db_users), true);
 	$color = $users[$login];
 	
@@ -116,27 +130,6 @@ function welcome($login)
 			</form>
 			
 		</div>';
-}
-
-
-function disconnect()
-{
-	session_start();
-	$db_users = "./db/users.json";
-	$login = $_SESSION['login'];
-	
-	if( file_exists($db_users) )
-	{
-		/* Loading users in an array	*/
-		$content = json_decode(file_get_contents($db_users), true);
-		unset($content[$login]);
-	
-		/* Open file to overwrite the new users list	*/
-		file_put_contents($db_users, json_encode($content));
-	}
-	
-	session_destroy();
-	header('location:index.php');
 }
 
 

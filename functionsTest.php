@@ -1,5 +1,4 @@
 <?php
-//require_once 'PHPUnit/Framework.php';
 require_once 'functions.php';
 
 class testFunctions extends PHPUnit_Framework_TestCase
@@ -50,6 +49,86 @@ class testFunctions extends PHPUnit_Framework_TestCase
 		
 		$this->assertTrue(uniqLogin($login1, $db_users));
 		$this->assertFalse(uniqLogin($login2, $db_users));
+		
+		unlink($db_users);
+	}
+
+	public function testConnect()
+	{
+		echo " Running testConnect()\n";
+
+		$db_users = "./db/usersTest.json";
+		$file = fopen($db_users, 'w+');
+		fclose($file);
+		
+		$login1 = "julien";
+		$login2 = "max";
+		$login3 = "loic";
+		
+		connect($login1, $db_users);
+        $this->assertRegExp('/^{"'. $login1 .'":"[a-zA-Z]*"}$/', file_get_contents($db_users));
+		
+		connect($login2, $db_users);
+        $this->assertRegExp('/^{"'. $login1 .'":"[a-zA-Z]*","' . $login2 .'":"[a-zA-Z]*"}$/', file_get_contents($db_users));
+		
+		connect($login3, $db_users);
+        $this->assertRegExp('/^{"'. $login1 .'":"[a-zA-Z]*","' . $login3 .'":"[a-zA-Z]*","' . $login2 .'":"[a-zA-Z]*"}$/', file_get_contents($db_users));
+		
+		unlink($db_users);
+	}
+	
+	
+	public function testWelcome()
+	{
+		echo " Running testWelcome()\n";
+		include 'language.php';
+
+		$db_users = "./db/usersTest.json";
+		$file = fopen($db_users, 'w+');
+		fclose($file);
+		
+		$login1 = "julien";		
+		connect($login1, $db_users);
+		
+		$users = json_decode(file_get_contents($db_users), true);
+		$color = $users[$login1];
+
+		$this->assertEquals('<div id="head1">
+			<p id="head">' . $welcome . '
+			</p>
+		</div>
+		<div id="head2">
+			<form  action="deconnection.php" method="post">
+				<a href="?lang=fr"><img src="./img/fr.jpg" width="16" height="11" alt="Français"></a>
+				<a href="?lang=en"><img src="./img/en.jpg" width="16" height="11" alt="English"></a>
+				<a href="?lang=sp"><img src="./img/sp.jpg" width="16" height="11" alt="Español"></a>
+				<span style="color:' . $color . '">' . $login1 . '</span>
+				<input id="buttonOff" type="submit" value="X" onclick="disconnect()"/>
+			</form>
+			
+		</div>', welcome($login1, $db_users));
+		
+		
+		$login2 = "max";		
+		connect($login2, $db_users);
+		
+		$users = json_decode(file_get_contents($db_users), true);
+		$color = $users[$login2];
+
+		$this->assertEquals('<div id="head1">
+			<p id="head">' . $welcome . '
+			</p>
+		</div>
+		<div id="head2">
+			<form  action="deconnection.php" method="post">
+				<a href="?lang=fr"><img src="./img/fr.jpg" width="16" height="11" alt="Français"></a>
+				<a href="?lang=en"><img src="./img/en.jpg" width="16" height="11" alt="English"></a>
+				<a href="?lang=sp"><img src="./img/sp.jpg" width="16" height="11" alt="Español"></a>
+				<span style="color:' . $color . '">' . $login2 . '</span>
+				<input id="buttonOff" type="submit" value="X" onclick="disconnect()"/>
+			</form>
+			
+		</div>', welcome($login2, $db_users));
 		
 		unlink($db_users);
 	}
