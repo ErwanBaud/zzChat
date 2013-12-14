@@ -9,7 +9,7 @@
 
  <target name="phpunit">
   <exec dir="${basedir}" executable="C:\php\phpunit.bat" failonerror="true">
-   <arg line="--log-xml ${basedir}/build/logs/phpunit.xml functionsTest.php" />
+   <arg line="--log-json ${basedir}/build/logs/functionsTest.json functionsTest.php" />
   </exec>
  </target>
 
