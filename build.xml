@@ -11,6 +11,9 @@
   <exec dir="${basedir}" executable="C:\php\phpunit.bat" failonerror="true">
    <arg line="--log-json ${basedir}/build/logs/functionsTest.json functionsTest.php" />
   </exec>
+  <exec dir="${basedir}" executable="C:\php\phpunit.bat" failonerror="true">
+   <arg line="--coverage-html ${basedir}/build/html functionsTest.php" />
+  </exec>
  </target>
 
  <target name="build" depends="clean,prepare,phpunit"/>
