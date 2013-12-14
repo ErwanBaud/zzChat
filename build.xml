@@ -8,8 +8,8 @@
  </target>
 
  <target name="phpunit">
-  <exec dir="${basedir}" executable="phpunit.phar" failonerror="true">
-   <arg line="--log-xml ${basedir}/build/logs/phpunit.xml functionsTest.php" />
+  <exec dir="${basedir}" executable="php.exe" failonerror="true">
+   <arg line="phpunit.phar --log-xml ${basedir}/build/logs/phpunit.xml functionsTest.php" />
   </exec>
  </target>
 
