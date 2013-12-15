@@ -16,6 +16,7 @@ if( file_exists($db_users) )
 {
 	/* Loading users in an array	*/
 	$content = json_decode(file_get_contents($db_users), true);
+	/* Delete the current user	*/
 	unset($content[$login]);
 
 	/* Open file to overwrite the new users list	*/
@@ -24,7 +25,7 @@ if( file_exists($db_users) )
 else
 {
 	$error = TRUE;
-	$errorMSG = "Erreur recuperation des users !";
+	$errorMSG = $error_users;
 }
 
 session_destroy();

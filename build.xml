@@ -1,7 +1,7 @@
 <project name="zzChat" default="build">
+	
  <target name="clean">
   <delete dir="${basedir}/build"/>
-  <delete dir="${basedir}/html"/>
  </target>
 
  <target name="prepare">

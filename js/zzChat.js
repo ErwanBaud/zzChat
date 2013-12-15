@@ -1,6 +1,6 @@
-//var url = "./zzChatAjax.php";
-var timer = setInterval(getMessages, 5 * 1000);			// timer for getMessages
-var ctimer = setInterval(getConnected, 1 * 60 * 1000);	// timer for getConnected
+var url = "./zzChatAjax.php";
+var timer = setInterval(getMessages, 10 * 1000);			// timer for getMessages
+var ctimer = setInterval(getConnected, 2 * 60 * 1000);	// timer for getConnected
 
 /* First display */
 getMessages();
