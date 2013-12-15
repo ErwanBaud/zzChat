@@ -1,5 +1,6 @@
 <?php
 include 'functions.php';
+include 'language.php';
 
 session_start();
 
@@ -77,7 +78,8 @@ if( isntAuth())
 				<!-- start #msgArea -->
 				<div id="msgArea">
 					<form id="form_msg" action="" method="post">
-						<input type="text" name="msg" id="msg" maxlength="150" autocomplete="off"></input><input id="send" type="submit" value="Envoyer" />
+							<input type="text" name="msg" id="msg" maxlength="150" autocomplete="off"/>
+							<input id="send" type="submit" value="<?php echo $submit; ?>" />
 					</form>
 				</div>
 				<!-- end #msgArea -->
