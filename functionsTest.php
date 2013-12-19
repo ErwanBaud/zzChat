@@ -81,7 +81,7 @@ class testFunctions extends PHPUnit_Framework_TestCase
 	public function testWelcome()
 	{
 		echo " Running testWelcome()\n";
-		include 'language.php';
+		include './lang/language.php';
 
 		$db_users = "./db/usersTest.json";
 		$file = fopen($db_users, 'w+');
