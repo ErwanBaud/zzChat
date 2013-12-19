@@ -108,7 +108,7 @@ function randomColor()
  */
 function welcome($login, $db_users)
 {
-	include 'language.php';
+	include './lang/language.php';
 
 	/* Loading users in an array       */
 	$users = json_decode(file_get_contents($db_users), true);

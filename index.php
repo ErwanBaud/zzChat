@@ -1,6 +1,6 @@
 <?php
 	include 'init.php';
-	include 'language.php';
+	include './lang/language.php';
 ?>
 
 <!DOCTYPE html>

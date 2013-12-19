@@ -1,6 +1,6 @@
 <?php
 
-include 'language.php';
+include './lang/language.php';
 include 'functions.php';
 
 $login = "";

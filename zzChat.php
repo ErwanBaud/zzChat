@@ -1,6 +1,6 @@
 <?php
+include './lang/language.php';
 include 'functions.php';
-include 'language.php';
 
 session_start();
 

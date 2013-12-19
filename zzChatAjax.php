@@ -1,9 +1,8 @@
 <?php
+include './lang/language.php';
+include 'functions.php';
 
 session_start();
-
-include 'functions.php';
-include 'language.php';
 
 $login = $_SESSION['login'];
 $db_users = "./db/users.json";
